@@ -1,0 +1,15 @@
+E:\Studia\Semestr III\Programowanie obiektowe\Lab2\obj\Debug\net7.0\Lab2.csproj.AssemblyReference.cache
+E:\Studia\Semestr III\Programowanie obiektowe\Lab2\obj\Debug\net7.0\Lab2.GeneratedMSBuildEditorConfig.editorconfig
+E:\Studia\Semestr III\Programowanie obiektowe\Lab2\obj\Debug\net7.0\Lab2.AssemblyInfoInputs.cache
+E:\Studia\Semestr III\Programowanie obiektowe\Lab2\obj\Debug\net7.0\Lab2.AssemblyInfo.cs
+E:\Studia\Semestr III\Programowanie obiektowe\Lab2\obj\Debug\net7.0\Lab2.csproj.CoreCompileInputs.cache
+E:\Studia\Semestr III\Programowanie obiektowe\Lab2\bin\Debug\net7.0\Lab2.exe
+E:\Studia\Semestr III\Programowanie obiektowe\Lab2\bin\Debug\net7.0\Lab2.deps.json
+E:\Studia\Semestr III\Programowanie obiektowe\Lab2\bin\Debug\net7.0\Lab2.runtimeconfig.json
+E:\Studia\Semestr III\Programowanie obiektowe\Lab2\bin\Debug\net7.0\Lab2.dll
+E:\Studia\Semestr III\Programowanie obiektowe\Lab2\bin\Debug\net7.0\Lab2.pdb
+E:\Studia\Semestr III\Programowanie obiektowe\Lab2\obj\Debug\net7.0\Lab2.dll
+E:\Studia\Semestr III\Programowanie obiektowe\Lab2\obj\Debug\net7.0\refint\Lab2.dll
+E:\Studia\Semestr III\Programowanie obiektowe\Lab2\obj\Debug\net7.0\Lab2.pdb
+E:\Studia\Semestr III\Programowanie obiektowe\Lab2\obj\Debug\net7.0\Lab2.genruntimeconfig.cache
+E:\Studia\Semestr III\Programowanie obiektowe\Lab2\obj\Debug\net7.0\ref\Lab2.dll
