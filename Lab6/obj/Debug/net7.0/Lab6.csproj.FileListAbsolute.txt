@@ -1,0 +1,17 @@
+D:\WSIiZ\Semestr 3\Programowanie obiektowe\Lab6\obj\Debug\net7.0\Lab6.csproj.AssemblyReference.cache
+D:\WSIiZ\Semestr 3\Programowanie obiektowe\Lab6\obj\Debug\net7.0\Lab6.GeneratedMSBuildEditorConfig.editorconfig
+D:\WSIiZ\Semestr 3\Programowanie obiektowe\Lab6\obj\Debug\net7.0\Lab6.AssemblyInfoInputs.cache
+D:\WSIiZ\Semestr 3\Programowanie obiektowe\Lab6\obj\Debug\net7.0\Lab6.AssemblyInfo.cs
+D:\WSIiZ\Semestr 3\Programowanie obiektowe\Lab6\obj\Debug\net7.0\Lab6.csproj.CoreCompileInputs.cache
+D:\WSIiZ\Semestr 3\Programowanie obiektowe\Lab6\bin\Debug\net7.0\Lab6.exe
+D:\WSIiZ\Semestr 3\Programowanie obiektowe\Lab6\bin\Debug\net7.0\Lab6.deps.json
+D:\WSIiZ\Semestr 3\Programowanie obiektowe\Lab6\bin\Debug\net7.0\Lab6.runtimeconfig.json
+D:\WSIiZ\Semestr 3\Programowanie obiektowe\Lab6\bin\Debug\net7.0\Lab6.dll
+D:\WSIiZ\Semestr 3\Programowanie obiektowe\Lab6\bin\Debug\net7.0\Lab6.pdb
+D:\WSIiZ\Semestr 3\Programowanie obiektowe\Lab6\bin\Debug\net7.0\Newtonsoft.Json.dll
+D:\WSIiZ\Semestr 3\Programowanie obiektowe\Lab6\obj\Debug\net7.0\Lab6.csproj.CopyComplete
+D:\WSIiZ\Semestr 3\Programowanie obiektowe\Lab6\obj\Debug\net7.0\Lab6.dll
+D:\WSIiZ\Semestr 3\Programowanie obiektowe\Lab6\obj\Debug\net7.0\refint\Lab6.dll
+D:\WSIiZ\Semestr 3\Programowanie obiektowe\Lab6\obj\Debug\net7.0\Lab6.pdb
+D:\WSIiZ\Semestr 3\Programowanie obiektowe\Lab6\obj\Debug\net7.0\Lab6.genruntimeconfig.cache
+D:\WSIiZ\Semestr 3\Programowanie obiektowe\Lab6\obj\Debug\net7.0\ref\Lab6.dll
