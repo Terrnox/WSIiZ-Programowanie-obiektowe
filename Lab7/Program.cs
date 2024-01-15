@@ -2,6 +2,8 @@
 using CsvHelper;
 using System.Globalization;
 
-Menu menu = new Menu();
+string filePath = "";
+
+Menu menu = new Menu(filePath);
 
 menu.showOptions();

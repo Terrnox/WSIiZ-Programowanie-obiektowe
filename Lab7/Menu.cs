@@ -47,24 +47,51 @@ namespace Lab7
 			}
 		}
 
+		public bool IsCsvFileEmpty()
+		{
+			if (File.Exists(filePath))
+			{
+				long fileSize = new FileInfo(filePath).Length;
+
+				return fileSize == 0;
+			}
+			else
+			{
+				return true;
+			}
+		}
 
 		public void addPerson(string imie, string nazwisko, int wiek, Adres adres, string pesel, string email)
 		{
-			Person osoba = new Person { FirstName = imie, LastName = nazwisko, Age = wiek, adres=adres, pesel=pesel, email = email };
+			Person osoba = new Person { FirstName = imie, LastName = nazwisko, Age = wiek, adres = adres, pesel = pesel, email = email };
 
-			using (var writer = new StreamWriter(filePath,true))
+			if (IsCsvFileEmpty())
+			{
+				using (var writer = new StreamWriter(filePath))
+				using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+				{
+					csv.WriteHeader<Person>();
+					csv.NextRecord();;
+				}
+			}
+
+			using (var stream = new FileStream(filePath, FileMode.Append))
+			using (var writer = new StreamWriter(stream))
 			using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
 			{
 				csv.WriteRecord(osoba);
+				writer.WriteLine();
 			}
-			Console.WriteLine("Dane zapisane do pliku CSV.");
+
+			Console.WriteLine("Dane dodane do pliku CSV.");
 		}
+		
 
 		public void modifyPerson(string lookForPesel)
 		{
 			var records = new List<Person>();
 
-			using (var reader = new StreamReader(filePath,true))
+			using (var reader = new StreamReader(filePath))
 			using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
 			{
 				csv.Context.RegisterClassMap<PersonMap>();
@@ -146,6 +173,7 @@ namespace Lab7
 					case 1:
 						Console.Clear();
 						menu1.showData();
+						Console.ReadKey();
 						break;
 					case 2:
 						Console.Clear();
