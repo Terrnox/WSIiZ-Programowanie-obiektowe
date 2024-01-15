@@ -13,7 +13,6 @@ namespace Lab7
 		{
 			Map(m => m.FirstName).Name("FirstName");
 			Map(m => m.LastName).Name("LastName");
-			Map(m => m.Age).Name("Age");
 			Map(m => m.adres.ulica).Name("ulica");
 			Map(m => m.adres.numerDomu).Name("numerDomu");
 			Map(m => m.adres.kodPocztowy).Name("kodPocztowy");

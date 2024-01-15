@@ -48,7 +48,7 @@ namespace Lab7
 						Console.WriteLine("\nDane odczytane z pliku CSV:");
 						foreach (var person in records)
 						{
-							Console.WriteLine($"Imię: {person.FirstName}\nNazwisko: {person.LastName}\nWiek: {person.Age}\nAdres: {person.adres.ulica} {person.adres.numerDomu}, {person.adres.kodPocztowy}, {person.adres.miasto}\nPESEL: {person.pesel}\nEmail: {person.email}");
+							Console.WriteLine($"Imię: {person.FirstName}\nNazwisko: {person.LastName}\nAdres: {person.adres.ulica} {person.adres.numerDomu}, {person.adres.kodPocztowy}, {person.adres.miasto}\nPESEL: {person.pesel}\nEmail: {person.email}");
 						}
 					}
 				}
@@ -83,8 +83,6 @@ namespace Lab7
 			string imie = Console.ReadLine();
 			Console.WriteLine("Podaj nazwisko osoby:");
 			string nazwisko = Console.ReadLine();
-            Console.WriteLine("Podaj wiek osoby:");
-			int wiek = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Podaj ulice:");
 			string ulica = Console.ReadLine();
             Console.WriteLine("Podaj nr domu:");
@@ -99,7 +97,7 @@ namespace Lab7
             Console.WriteLine("Podaj adres e-mail osoby:");
 			string email = Console.ReadLine();
 
-            Person osoba = new Person(imie,nazwisko,wiek,adres,pesel,email);
+            Person osoba = new Person(imie,nazwisko,adres,pesel,email);
 
 
             if (IsCsvFileEmpty())
@@ -108,7 +106,6 @@ namespace Lab7
 				using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
 				{
 					csv.WriteHeader<Person>();
-					csv.NextRecord();
 				}
 			}
 
@@ -143,8 +140,6 @@ namespace Lab7
                 recordToUpdate.FirstName = Console.ReadLine();
                 Console.WriteLine("Podaj nazwisko osoby:");
                 recordToUpdate.LastName = Console.ReadLine();
-                Console.WriteLine("Podaj wiek osoby:");
-                recordToUpdate.Age = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Podaj ulice:");
                 recordToUpdate.adres.ulica = Console.ReadLine();
                 Console.WriteLine("Podaj nr domu:");

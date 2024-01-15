@@ -1,3 +1,3 @@
-FirstName,ulica,LastName,numerDomu,Age,kodPocztowy,miasto,pesel,email
-Adam,Pogoń,Kosi,54,234,35-678,Pogonisko,99041188091,akosi@mail.com
-Adam,Rejtanowski,Nowakowski,43,45,35-500,Rzeszów,87052301078,anowakowski@mail.pl
+FirstName,LastName,ulica,numerDomu,kodPocztowy,miasto,pesel,email
+Tomasz,Tusk,Tuskowa,35,35-200,Pułtusk,77031101054,ttusk@ko.pl
+Jarosław,Kaczyński,Nowogrodzka,52,40-500,Warszawa,33010101054,jkaczor@pis.pl

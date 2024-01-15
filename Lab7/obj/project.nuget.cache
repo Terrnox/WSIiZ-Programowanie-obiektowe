@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "V1GcAM5YNYs+2PcJgZHEOJMtxjqi4KmcNaenrMhPj7iXtiv+Il98wMd7cD4LyOPqPfiJD3Ng5z0SZI4pK2BHug==",
+  "dgSpecHash": "HdbZvyQxW4yq+J/dTMG5v+/lGpJcdXAVw0ggaUhtf8j5oKiIIErMPBD+5cdNI6IP/sbn/JS+RHKnnPkJKGteow==",
   "success": true,
-  "projectFilePath": "E:\\Studia\\Semestr III\\Programowanie obiektowe\\Lab7\\Lab7\\Lab7.csproj",
+  "projectFilePath": "E:\\Studia\\Semestr III\\Programowanie obiektowe\\Lab7\\Lab7.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Terrnox\\.nuget\\packages\\csvhelper\\29.0.0\\csvhelper.29.0.0.nupkg.sha512"
   ],
