@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using CsvHelper;
 using System.Globalization;
+using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 
 namespace Lab7
 {
@@ -33,17 +35,31 @@ namespace Lab7
 
 		public void showData()
 		{
-			using (var reader = new StreamReader(filePath))
-			using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+			try
 			{
-				csv.Context.RegisterClassMap<PersonMap>();
-				var records = csv.GetRecords<Person>().ToList();
-
-				Console.WriteLine("\nDane odczytane z pliku CSV:");
-				foreach (var person in records)
+				if (IsCsvFileEmpty() == false)
 				{
-					Console.WriteLine($"Imię: {person.FirstName}\nNazwisko: {person.LastName}\nWiek: {person.Age}\nAdres: {person.adres.ulica} {person.adres.numerDomu}, {person.adres.kodPocztowy}, {person.adres.miasto}\nPESEL: {person.pesel}\nEmail: {person.email}");
+					using (var reader = new StreamReader(filePath))
+					using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+					{
+						csv.Context.RegisterClassMap<PersonMap>();
+						var records = csv.GetRecords<Person>().ToList();
+
+						Console.WriteLine("\nDane odczytane z pliku CSV:");
+						foreach (var person in records)
+						{
+							Console.WriteLine($"Imię: {person.FirstName}\nNazwisko: {person.LastName}\nWiek: {person.Age}\nAdres: {person.adres.ulica} {person.adres.numerDomu}, {person.adres.kodPocztowy}, {person.adres.miasto}\nPESEL: {person.pesel}\nEmail: {person.email}");
+						}
+					}
 				}
+				else
+				{
+					Console.WriteLine("Plik jest pusty");
+				}
+			}
+			catch (FileNotFoundException)
+			{
+				Console.WriteLine($"Nie znaleziono pliku {filePath}");
 			}
 		}
 
@@ -61,17 +77,38 @@ namespace Lab7
 			}
 		}
 
-		public void addPerson(string imie, string nazwisko, int wiek, Adres adres, string pesel, string email)
+		public void addPerson()
 		{
-			Person osoba = new Person { FirstName = imie, LastName = nazwisko, Age = wiek, adres = adres, pesel = pesel, email = email };
+			Console.WriteLine("Podaj imie osoby:");
+			string imie = Console.ReadLine();
+			Console.WriteLine("Podaj nazwisko osoby:");
+			string nazwisko = Console.ReadLine();
+            Console.WriteLine("Podaj wiek osoby:");
+			int wiek = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Podaj ulice:");
+			string ulica = Console.ReadLine();
+            Console.WriteLine("Podaj nr domu:");
+			int nrDom = Convert.ToInt32(Console.ReadLine()); 
+            Console.WriteLine("Podaj kod pocztowy:");
+			string kodPocztowy = Console.ReadLine();
+            Console.WriteLine("Podaj miejscowość:");
+			string miasto = Console.ReadLine();
+            Adres adres = new Adres(ulica, nrDom, kodPocztowy, miasto);
+			Console.WriteLine("Podaj PESEL osoby:");
+			string pesel = Console.ReadLine();
+            Console.WriteLine("Podaj adres e-mail osoby:");
+			string email = Console.ReadLine();
 
-			if (IsCsvFileEmpty())
+            Person osoba = new Person(imie,nazwisko,wiek,adres,pesel,email);
+
+
+            if (IsCsvFileEmpty())
 			{
 				using (var writer = new StreamWriter(filePath))
 				using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
 				{
 					csv.WriteHeader<Person>();
-					csv.NextRecord();;
+					csv.NextRecord();
 				}
 			}
 
@@ -102,18 +139,39 @@ namespace Lab7
 
 			if (recordToUpdate != null)
 			{
-				Console.WriteLine("Enter updated information:");
-				Console.WriteLine("Updated First Name:");
-				recordToUpdate.FirstName = Console.ReadLine();
+                Console.WriteLine("Podaj imie osoby:");
+                recordToUpdate.FirstName = Console.ReadLine();
+                Console.WriteLine("Podaj nazwisko osoby:");
+                recordToUpdate.LastName = Console.ReadLine();
+                Console.WriteLine("Podaj wiek osoby:");
+                recordToUpdate.Age = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Podaj ulice:");
+                recordToUpdate.adres.ulica = Console.ReadLine();
+                Console.WriteLine("Podaj nr domu:");
+                recordToUpdate.adres.numerDomu = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Podaj kod pocztowy:");
+                recordToUpdate.adres.kodPocztowy = Console.ReadLine();
+                Console.WriteLine("Podaj miejscowość:");
+                recordToUpdate.adres.miasto = Console.ReadLine();
+                Console.WriteLine("Podaj PESEL osoby:");
+                recordToUpdate.pesel = Console.ReadLine();
+                Console.WriteLine("Podaj adres e-mail osoby:");
+                recordToUpdate.email = Console.ReadLine();
 
-				using (var writer = new StreamWriter(filePath))
-				using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+				if (checkEmail(recordToUpdate.email) && checkPesel(recordToUpdate.pesel))
 				{
-					csv.Context.RegisterClassMap<PersonMap>();
-					csv.WriteRecords(records);
+					using (var writer = new StreamWriter(filePath))
+					using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+					{
+						csv.Context.RegisterClassMap<PersonMap>();
+						csv.WriteRecords(records);
+					}
+                    Console.WriteLine("Osoba zaktualizowana w pliku CSV.");
+                }
+				else
+				{
+					Console.WriteLine("Podano złe dane");
 				}
-
-				Console.WriteLine("Osoba zaktualizowana w pliku CSV.");
 			}
 			else
 			{
@@ -159,7 +217,44 @@ namespace Lab7
 			Environment.Exit(0);
 		}
 
-		public void showOptions()
+        public bool checkEmail(string email)
+        {
+            if (Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+		public bool checkPesel(string pesel)
+		{
+			bool check = true;
+			int licznik = 0;
+
+			for(int i = 0;i<pesel.Length;i++)
+			{
+				if (pesel[i] <= 48 && pesel[i] >= 57)
+				{
+					licznik++;
+					check = false; break;
+				}
+			}
+
+			if(pesel.Length == 11 && check == true)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+
+		}
+
+        public void showOptions()
 		{
 			Menu menu1 = new Menu("dane.csv");
 			while (true)
@@ -177,26 +272,7 @@ namespace Lab7
 						break;
 					case 2:
 						Console.Clear();
-						Console.WriteLine("Podaj imie osoby:");
-						string imie = Console.ReadLine();
-						Console.WriteLine("Podaj nazwisko osoby:");
-						string nazwisko = Console.ReadLine();
-						Console.WriteLine("Podaj wiek osoby:");
-						int wiek = Convert.ToInt32(Console.ReadLine());
-						Console.WriteLine("Podaj ulice:");
-						string ulica = Console.ReadLine();
-						Console.WriteLine("Podaj nr domu:");
-						int nrDom = Convert.ToInt32(Console.ReadLine());
-						Console.WriteLine("Podaj kod pocztowy:");
-						string kodPocztowy = Console.ReadLine();
-						Console.WriteLine("Podaj miejscowość:");
-						string miasto = Console.ReadLine();
-						Adres adres = new Adres(ulica, nrDom, kodPocztowy, miasto);
-						Console.WriteLine("Podaj PESEL osoby:");
-						string pesel = Console.ReadLine();
-						Console.WriteLine("Podaj adres e-mail osoby:");
-						string email = Console.ReadLine();
-						menu1.addPerson(imie,nazwisko,wiek,adres,pesel,email);
+						menu1.addPerson();
 						break;
 					case 3:
 						Console.Clear();

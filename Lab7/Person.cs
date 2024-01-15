@@ -22,5 +22,21 @@ namespace Lab7
 
 		public string email { get; set; }
 
+
+		public Person()
+		{
+
+		}
+
+		public Person(string imie,string nazwisko, int wiek, Adres adres, string pesel, string email)
+		{
+			FirstName = imie;
+			LastName = nazwisko;
+			Age = wiek;
+			this.adres = adres;
+			this.pesel = pesel;
+			this.email = email;
+		}
+
 	}
 }
