@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "UXLonse/mxrxwTBgkYtlbCmyIP+HqUHmMv+0fLT9/SEIn76h5b4icZ7biXtmQN0h1mtKfS5c0NVoEG6HqpSTYA==",
+  "success": true,
+  "projectFilePath": "D:\\WSIiZ\\Semestr 3\\Programowanie obiektowe\\Lab7\\Lab7.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Terrnox\\.nuget\\packages\\csvhelper\\29.0.0\\csvhelper.29.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
